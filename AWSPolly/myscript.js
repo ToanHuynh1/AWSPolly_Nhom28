@@ -64,7 +64,7 @@ signinButton.addEventListener("click", (e) => {
         last_login: lgDate
       })
         .then(() => {
-          location.href = "http://192.168.56.1:8080/AWSPolly/index.html";
+          location.href = "http://192.168.56.1:8080/AWSPolly/index.html?uuid="+emailSignin;
           alert('Đăng nhập thành công')
         })
         .catch((error) => {
