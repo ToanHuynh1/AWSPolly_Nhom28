@@ -24,11 +24,11 @@ var generatePerson = function (online) {
 
     var person = {};
 
-    var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' ');
+    var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' '); //đổi
 
     var avatars = ['https://hinhnen123.com/wp-content/uploads/2021/09/Chiem-nguong-400-hinh-anh-meo-ngau-cuc-dep-phong-cach-ba-dao-12.jpg',
         'https://haycafe.vn/wp-content/uploads/2022/02/anh-meo-cute-hinh-cute-meo.jpg',
-        'https://i.pinimg.com/564x/05/09/94/050994962c61328795f2568b4c51c0ab.jpg'];
+        'https://i.pinimg.com/564x/05/09/94/050994962c61328795f2568b4c51c0ab.jpg'];  //đổi
 
     person.first = names[Math.floor(Math.random() * names.length)];
     person.last = names[Math.floor(Math.random() * names.length)];
@@ -50,8 +50,8 @@ var generatePerson = function (online) {
 let newPerson = generatePerson(true);
 
 let pubnub = new PubNub({
-    publishKey: 'pub-c-77eb6c6f-e84e-4884-88ca-b202a783e934',
-    subscribeKey: 'sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3',
+    // publishKey: 'pub-c-77eb6c6f-e84e-4884-88ca-b202a783e934',
+    // subscribeKey: 'sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3',
     uuid: newPerson.uuid
 });
 
