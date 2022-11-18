@@ -3,14 +3,14 @@ import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.8.2/fireb
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCIAbwwJGA1g3Cn4Ri_23Om8ovDOwKN5vw",
-    authDomain: "authfirebase-4bbbb.firebaseapp.com",
-    databaseURL: "https://authfirebase-4bbbb-default-rtdb.firebaseio.com",
-    projectId: "authfirebase-4bbbb",
-    storageBucket: "authfirebase-4bbbb.appspot.com",
-    messagingSenderId: "788019720763",
-    appId: "1:788019720763:web:b03a6aeac4376e53c4a21e"
-};
+    apiKey: "AIzaSyAmcD0hh6l6t-Ifdajh5AjbGrXetXdsJuI",
+    authDomain: "authfirebase-2b26c.firebaseapp.com",
+    databaseURL: "https://authfirebase-2b26c-default-rtdb.firebaseio.com",
+    projectId: "authfirebase-2b26c",
+    storageBucket: "authfirebase-2b26c.appspot.com",
+    messagingSenderId: "801604261642",
+    appId: "1:801604261642:web:19c68723b4fcf93e1e0cf3"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
