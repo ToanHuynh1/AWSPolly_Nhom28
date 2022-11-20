@@ -1,0 +1,23 @@
+{
+  "name": "awspolly_nhom28-5e975dfd1756c4c0ffc689113a3809808ccd80eb",
+  "version": "1.0.0",
+  "description": "Nhóm 28: - Chủ đề: Vận dụng và phát triển AWS Polly - Thành viên:    - Huỳnh Bảo Toàn         20161385   - Vũ Trần Thành Công     20110448   - Đào Xuân Trí           20110581",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToanHuynh1/AWSPolly_Nhom28.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ToanHuynh1/AWSPolly_Nhom28/issues"
+  },
+  "homepage": "https://github.com/ToanHuynh1/AWSPolly_Nhom28#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1258.0"
+  }
+}
