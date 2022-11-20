@@ -1,6 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
-import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+import { getFirestore, doc, getDoc, getDocs, collection, setDoc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+
 
 
 const firebaseConfig = {
@@ -31,7 +33,8 @@ signupButton.addEventListener("click", (e) => {
       // Signed in
       const user = userCredential.user;
 
-      set(ref(database, "users/" + user.uid), {
+      const db = getDatabase();
+      setDoc(doc(db, "users/" + user.uid), {
         name: name,
         nohp: nohp,
         email: emailSignup,

@@ -14,9 +14,11 @@
 #pub-nub .container {
     margin: 0 auto;
     width: 750px;
-    background: #444753;
+    background: #f9f9fd;
     border-radius: 5px;
+    box-shadow: 1px 1px #888888;
 }
+
 
 #pub-nub .people-list {
   width: 260px;
@@ -211,11 +213,10 @@
 }
 
 #pub-nub .speech-button {
-
   float: right;
   margin-top: 6px;
   background-color: #d4e2dd;
-  
+
 }
 
 #pub-nub .img-header

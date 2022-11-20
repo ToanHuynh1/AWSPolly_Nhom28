@@ -1,22 +1,25 @@
-const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3/aws-polly';// sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3
+
+const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3/aws-polly';
 const chatChannel = 'pubnub_chat_polly';
 const chatHistoryUl = $('#chat-history-ul');
 
 function parseTime(time) {
     return time.toLocaleDateString() + ", " + time.toLocaleTimeString().
-        replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+    replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
 }
 
 // Make a jQuery sort for the chat log based on message timetoken (tt)
-jQuery.fn.sortDomElements = (function () {
-    return function (comparator) {
-        return Array.prototype.sort.call(this, comparator).each(function (i) {
+jQuery.fn.sortDomElements = (function() {
+    return function(comparator) {
+        return Array.prototype.sort.call(this, comparator).each(function(i) {
             this.parentNode.appendChild(this);
         });
     };
 })();
 
-var generatePerson = function (online) {
+var generatePerson = function(online) {
+
+    
     var myChatUser = JSON.parse(localStorage.getItem("myChatUser"));
     if (myChatUser) {
         return myChatUser;
@@ -24,11 +27,9 @@ var generatePerson = function (online) {
 
     var person = {};
 
-    var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' '); //đổi
+    var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' ');
 
-    var avatars = ['https://hinhnen123.com/wp-content/uploads/2021/09/Chiem-nguong-400-hinh-anh-meo-ngau-cuc-dep-phong-cach-ba-dao-12.jpg',
-        'https://haycafe.vn/wp-content/uploads/2022/02/anh-meo-cute-hinh-cute-meo.jpg',
-        'https://i.pinimg.com/564x/05/09/94/050994962c61328795f2568b4c51c0ab.jpg'];  //đổi
+    var avatars = ['https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg'];
 
     person.first = names[Math.floor(Math.random() * names.length)];
     person.last = names[Math.floor(Math.random() * names.length)];
@@ -49,9 +50,10 @@ var generatePerson = function (online) {
 // use a helper function to generate a new profile
 let newPerson = generatePerson(true);
 
+
 let pubnub = new PubNub({
-    // publishKey: 'pub-c-77eb6c6f-e84e-4884-88ca-b202a783e934',
-    // subscribeKey: 'sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3',
+    publishKey: 'pub-c-77eb6c6f-e84e-4884-88ca-b202a783e934',
+    subscribeKey: 'sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3',
     uuid: newPerson.uuid
 });
 
@@ -60,8 +62,8 @@ let peopleTemplate = Handlebars.compile($("#person-template").html());
 let meTemplate = Handlebars.compile($("#message-template").html());
 let userTemplate = Handlebars.compile($("#message-response-template").html());
 
-const source_language = "en";//en
-const target_language = "es";//es
+const source_language = "en";
+const target_language = "es";
 
 var AUDIO_FORMATS = {
     'ogg_vorbis': 'audio/ogg',
@@ -87,10 +89,10 @@ const init = () => {
     } else {
 
         pubnub.addListener({
-            message: function (message) {
+            message: function(message) {
                 renderMessage(message);
             },
-            presence: function (presenceEvent) {
+            presence: function(presenceEvent) {
                 let type = presenceEvent.action;
 
                 if (type === 'join') {
@@ -110,11 +112,11 @@ const init = () => {
 
         //get old messages from history
         pubnub.history({
-            channel: chatChannel,
-            count: 3,
-            stringifiedTimeToken: true
-        },
-            function (status, response) {
+                channel: chatChannel,
+                count: 3,
+                stringifiedTimeToken: true
+            },
+            function(status, response) {
                 if (response.messages && response.messages.length > 0) {
                     response.messages.forEach((historicalMessage) => {
                         renderMessage(historicalMessage, true);
@@ -123,7 +125,7 @@ const init = () => {
             }
         );
 
-        $("#speechButton").click(function () {
+        $("#speechButton").click(function() {
 
             if (speechEnabled) {
                 speechEnabled = false;
@@ -217,7 +219,7 @@ const renderMessage = (message) => {
     // Sort messages in chat log based on their timetoken (tt)
     chatHistoryUl
         .children()
-        .sortDomElements(function (a, b) {
+        .sortDomElements(function(a, b) {
             akey = a.dataset.order;
             bkey = b.dataset.order;
             if (akey == bkey) return 0;
@@ -240,7 +242,7 @@ const scrollToBottom = () => {
  */
 function getSupportedAudioFormats(player) {
     return Object.keys(AUDIO_FORMATS)
-        .filter(function (format) {
+        .filter(function(format) {
             var supported = player.canPlayType(AUDIO_FORMATS[format]);
             return supported === 'probably' || supported === 'maybe';
         });
@@ -261,13 +263,13 @@ function getPollyAudioForText(text) {
                     }
                 }
             }),
-        }).done(function (res) {
+        }).done(function(res) {
             return resolve('data:audio/mp3;base64,' + res.polly_sound);
         });
     });
 }
 
-window.onbeforeunload = function () {
+window.onbeforeunload = function() {
     pubnub.unsubscribe([chatChannel])
 };
 
