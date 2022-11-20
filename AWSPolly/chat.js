@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3/aws-polly';
+=======
+const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753/aws-polly';// sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3
+>>>>>>> efe91b3530a8a2c2977670c838b096b301796f83
 const chatChannel = 'pubnub_chat_polly';
 const chatHistoryUl = $('#chat-history-ul');
 
@@ -52,8 +56,13 @@ let newPerson = generatePerson(true);
 
 
 let pubnub = new PubNub({
+<<<<<<< HEAD
     publishKey: 'pub-c-77eb6c6f-e84e-4884-88ca-b202a783e934',
     subscribeKey: 'sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3',
+=======
+     publishKey: 'pub-c-86a6a9b1-fe29-415f-ba09-06dd99773907',
+     subscribeKey: 'sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753',
+>>>>>>> efe91b3530a8a2c2977670c838b096b301796f83
     uuid: newPerson.uuid
 });
 
