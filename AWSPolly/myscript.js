@@ -1,12 +1,10 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
-import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-import { getFirestore, doc, getDoc, getDocs, collection, setDoc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAmcD0hh6l6t-Ifdajh5AjbGrXetXdsJuI",
+  apiKey: "AIzaSyAumUTEV-8m0ssgIYssxN6gGzgd_VxPB78",
   authDomain: "authfirebase-2b26c.firebaseapp.com",
   databaseURL: "https://authfirebase-2b26c-default-rtdb.firebaseio.com",
   projectId: "authfirebase-2b26c",
@@ -14,6 +12,8 @@ const firebaseConfig = {
   messagingSenderId: "801604261642",
   appId: "1:801604261642:web:19c68723b4fcf93e1e0cf3"
 };
+
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -23,18 +23,22 @@ let signinButton = document.getElementById("signin-button");
 let signupButton = document.getElementById("signup-button");
 
 signupButton.addEventListener("click", (e) => {
+
   let name = document.getElementById("name").value;
   let nohp = document.getElementById("nohp").value;
   let emailSignup = document.getElementById("email_signup").value;
   let passwordSignup = document.getElementById("psw_signup").value;
 
-  createUserWithEmailAndPassword(auth, emailSignup, passwordSignup)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
+  // createUserWithEmailAndPassword(auth, emailSignup, passwordSignup)
+  //   .then((userCredential) => {
+  //     // Signed in
+      //  const user = userCredential.user;
 
-      const db = getDatabase();
-      setDoc(doc(db, "users/" + user.uid), {
+      let userid = Math.floor(Math.random() * (10000 - 1 + 1)) + 1;
+
+      userid = userid +'1';
+
+      set(ref(database, "users/" + userid), {
         name: name,
         nohp: nohp,
         email: emailSignup,
@@ -48,12 +52,12 @@ signupButton.addEventListener("click", (e) => {
           alert(error);
         });
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert('errorMessage');
-    });
-});
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       alert('errorMessage');
+//     });
+// });
 
 signinButton.addEventListener("click", (e) => {
   let emailSignin = document.getElementById("email_signin").value;

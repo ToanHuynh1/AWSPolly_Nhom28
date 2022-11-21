@@ -3,7 +3,7 @@ import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.8.2/fireb
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAmcD0hh6l6t-Ifdajh5AjbGrXetXdsJuI",
+    apiKey: "AIzaSyAumUTEV-8m0ssgIYssxN6gGzgd_VxPB78",
   authDomain: "authfirebase-2b26c.firebaseapp.com",
   databaseURL: "https://authfirebase-2b26c-default-rtdb.firebaseio.com",
   projectId: "authfirebase-2b26c",
