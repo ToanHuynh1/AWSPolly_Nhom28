@@ -1,11 +1,11 @@
-// const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753/AWSPolly';
-// const chatChannel = 'pubnub_chat_polly';
-// const chatHistoryUl = $('#chat-history-ul');
+const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753/AWSPolly';
+const chatChannel = 'pubnub_chat_polly';
+const chatHistoryUl = $('#chat-history-ul');
 
-// function parseTime(time) {
-//     return time.toLocaleDateString() + ", " + time.toLocaleTimeString().
-//         replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
-// }
+function parseTime(time) {
+     return time.toLocaleDateString() + ", " + time.toLocaleTimeString().
+        replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+}
 
 // Make a jQuery sort for the chat log based on message timetoken (tt)
 jQuery.fn.sortDomElements = (function () {
@@ -22,13 +22,13 @@ var generatePerson = function (online) {
         return myChatUser;
     }
 
-    // var person = {};
+    var person = {};
 
-    // var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' '); 
+    var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' '); 
 
-    // var avatars = ['https://hinhnen123.com/wp-content/uploads/2021/09/Chiem-nguong-400-hinh-anh-meo-ngau-cuc-dep-phong-cach-ba-dao-12.jpg',
-    //     'https://haycafe.vn/wp-content/uploads/2022/02/anh-meo-cute-hinh-cute-meo.jpg',
-    //     'https://i.pinimg.com/564x/05/09/94/050994962c61328795f2568b4c51c0ab.jpg']; 
+    var avatars = ['https://hinhnen123.com/wp-content/uploads/2021/09/Chiem-nguong-400-hinh-anh-meo-ngau-cuc-dep-phong-cach-ba-dao-12.jpg',
+        'https://haycafe.vn/wp-content/uploads/2022/02/anh-meo-cute-hinh-cute-meo.jpg',
+        'https://i.pinimg.com/564x/05/09/94/050994962c61328795f2568b4c51c0ab.jpg']; 
 
     person.first = names[Math.floor(Math.random() * names.length)];
     person.last = names[Math.floor(Math.random() * names.length)];
@@ -50,12 +50,9 @@ var generatePerson = function (online) {
 let newPerson = generatePerson(true);
 
 let pubnub = new PubNub({
-    // publishKey: 'pub-c-86a6a9b1-fe29-415f-ba09-06dd99773907',
-    // subscribeKey: 'sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753',
-    //publishKey: 'pub-c-87f9b956-f89b-48f3-99e9-e0769d909a66',
-    //subscribeKey: 'sub-c-e1ccd4f6-7857-4505-b59d-ede1bf03ac5e',
-    //  pub-c-86a6a9b1-fe29-415f-ba09-06dd99773907
-    //  sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753
+    publishKey: 'pub-c-86a6a9b1-fe29-415f-ba09-06dd99773907',
+    subscribeKey: 'sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753',
+    
     uuid: newPerson.uuid
 });
 
@@ -250,26 +247,26 @@ function getSupportedAudioFormats(player) {
         });
 }
 
-// function getPollyAudioForText(text) {
-//     return new Promise((resolve) => {
-//         $.ajax({
-//             method: "POST",
-//             url: pollyAudioPubNubFunction,
-//             data: JSON.stringify({
-//                 "data": {
-//                     "text": text,
-//                     "polly": {
-//                         "voice": "Matthew",
-//                         "format": "mp3",
-//                         "location": "text"
-//                     }
-//                 }
-//             }),
-//         }).done(function (res) {
-//             return resolve('data:audio/mp3;base64,' + res.polly_sound);
-//         });
-//     });
-// }
+function getPollyAudioForText(text) {
+    return new Promise((resolve) => {
+        $.ajax({
+            method: "POST",
+            url: pollyAudioPubNubFunction,
+            data: JSON.stringify({
+                "data": {
+                    "text": text,
+                    "polly": {
+                        "voice": "Matthew",
+                        "format": "mp3",
+                        "location": "text"
+                    }
+                }
+            }),
+        }).done(function (res) {
+            return resolve('data:audio/mp3;base64,' + res.polly_sound);
+        });
+    });
+}
 
 window.onbeforeunload = function () {
     pubnub.unsubscribe([chatChannel])
