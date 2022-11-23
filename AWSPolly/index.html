@@ -16,15 +16,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
     <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.25.0.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">  
     <style type="text/css">
         li {
             list-style: none;
         }
     </style>
+
+
+
  
 </head>
 
-<body>
+<body >
     <!-- Header -->
     <section id="header">
         <div class="header container">
@@ -50,10 +55,7 @@
             </div>
         </div>
     </section>
-    <!-- End Header -->
 
-
-    <!-- Hero Section  -->
     <section id="hero">
         <div class="hero container">
             <div>
@@ -64,10 +66,7 @@
             </div>
         </div>
     </section>
-    <!-- End Hero Section  -->
 
-
-    <!-- Projects Section -->
     <section id="projects">
         <div class="projects container">
             <div class="projects-header">
@@ -81,7 +80,7 @@
                         <p></p>
                     </div>
                     <div class="project-img">
-                        <!-- <img src="img/avt3.PNG" alt="img"> -->
+                        <img src="img/avt3.PNG" alt="img">
                     </div>
                 </div>
                 <div class="project-item">
@@ -91,7 +90,7 @@
                         <p></p>
                     </div>
                     <div class="project-img">
-                        <!-- <img src="img/avt2.jpg" alt="img"> -->
+                        <img src="img/avt2.jpg" alt="img">
                     </div>
                 </div>
                 <div class="project-item">
@@ -101,7 +100,7 @@
                         <p></p>
                     </div>
                     <div class="project-img">
-                        <!-- <img src="img/avt1.jpg" alt="img"> -->
+                        <img src="img/avt1.jpg" alt="img">
                     </div>
                 </div>
 
@@ -109,10 +108,6 @@
         </div>
         </div>
     </section>
-    <!-- End Projects Section -->
-
-
-    <!-- Service Section -->
     <section id="services">
         <div class="services container">
             <div class="service-top">
@@ -162,20 +157,20 @@
                 <div class="button">
                     <button class="btn1" onClick="speakText()">Synthesize</button>
                     <button class="btn2" onClick="clearText()">Clear Text</button>
+                    <button class="btn3" type="button" id="audio-btn"><span class="bi bi-mic"></span> MircoPhone</button>
                 </div>
                 <p id="result">None Text</p>
             </div>
             <audio id="audioPlayback" controls>
         <source id="audioSource" type="audio/mp3" src="">
       </audio>
-            <!--Polly.HTML.Browser.config -->
             <script src="https://sdk.amazonaws.com/js/aws-sdk-2.410.0.min.js"></script>
             <script type="text/javascript" src="main.js"></script>
         </div>
     </section>
-    <!-- End Service Section -->
 
-    <section id="pub-nub">
+
+    <section id="pub-nub" >
 
        
         <h1 class="section-title">Pu<span>b</span>Nub</h1>
@@ -184,10 +179,24 @@
             <div class="people-list" id="people-list">
                 <ul class="list">
 
+                    
+
+                   
+                    <h1 style="margin-bottom: 12px;">Danh sách thành viên</h1>
+
+                    <i style="margin-bottom: 12px;" class="fa fa-circle online"></i> online
+
+                  
+                    <div id="name-js">
+                   
                     <script type="module">
                         
                         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js"; 
-                        
+                        import {get, getDatabase,ref ,set, child, update, remove}   from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js"; 
+                        import {getAuth } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js"; 
+                    
+                   
+                            
                         const firebaseConfig = {
                             apiKey: "AIzaSyAumUTEV-8m0ssgIYssxN6gGzgd_VxPB78",
                             authDomain: "authfirebase-2b26c.firebaseapp.com",
@@ -199,75 +208,59 @@
                         };
                         const app = initializeApp(firebaseConfig); 
                         
-                        import {get, getDatabase,ref ,set, child, update, remove} 
-                        
-                        from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js"; 
-                        
-                        import {getAuth } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js"; 
-                        
+                                   
                         const dbRef = ref(getDatabase()); 
                         
                         const auth = getAuth();
-            
-            
+                    
+                    
                         get(child(dbRef, "users/" )).then((snapshot) => {
                         if (snapshot.exists()) {
-            
+                    
                             var UserObject = snapshot.val();
-            
+                    
                             var ArrayId = []
-            
+                    
                             for (var x in UserObject)
                             {
                                 let k = ArrayId.push(x)
                             }
-            
-            
+                    
+                            console.log(UserObject)
+                    
+                    
                             const deep_value = (obj, path) => 
                             path
                             .replace(/\[|\]\.?/g, '.')
                             .split('.')
                             .filter(s => s)
                             .reduce((acc, val) => acc && acc[val], obj);
-            
                             
+                            let lamml2 ="";
                             for (var i = 0 ; i < ArrayId.length; i++)
                             {
                             var bien = ArrayId[i] + '.name';
-            
+
+                            console.log(bien)
+                            
                             var kt = deep_value(UserObject, bien);
-
+                            
                             var idtest = 'skud'+ (i);
-
-            
-                            document.getElementById(idtest).innerHTML = kt;
-            
-                            }
-            
+                            lamml2 += `<h2 style="margin-bottom: 12px;" id=${idtest}>${kt}</h2>`;
+                            
+                            document.getElementById("name-js").innerHTML = lamml2;
+                            
+                        }
+                    
                         } else {
                             console.log("No data available");
                          }
                         }).catch((error) => {
                             console.error(error);
                         });
-            
+                      
                     </script>
-
-                    
-                    <h1 style="margin-bottom: 12px;">Danh sách thành viên</h1>
-
-                    <i style="margin-bottom: 12px;" class="fa fa-circle online"></i> online
-
-                    <h2 style="margin-bottom: 12px;" id="skud0"></h2>
-
-                    <h2 style="margin-bottom: 12px;" id="skud1"></h2>
-
-                    <h2 style="margin-bottom: 12px;" id="skud2"></h2>
-
-                    <h2 style="margin-bottom: 12px;" id="skud3"></h2>
-
-                    <h2 style="margin-bottom: 12px;" id="skud4"></h2>
-
+                    </div>
                 </ul>
             </div>
             <div class="chat">
@@ -330,9 +323,6 @@
     </section>
 
 
-
-
-    <!-- About Section -->
     <section id="about">
         <div class="about container">
             <div class="col-left">
@@ -347,9 +337,7 @@
             </div>
         </div>
     </section>
-    <!-- End About Section -->
 
-    <!-- Contact Section -->
     <section id="contact">
         <div class="contact container">
             <div>
@@ -381,8 +369,7 @@
             </div>
         </div>
     </section>
-    <!-- End Contact Section -->
-    <!-- Footer -->
+
     <section id="footer">
         <div class="footer container">
             <div class="brand">
@@ -390,7 +377,7 @@
             </div>
             <div class="social-icon">
                 <div class="social-item">
-                    <a href="https://www.facebook.com/profile.php?id=100009149872534"><img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" /></a>
+                    <a href="https://www.facebook.com/profile.php?id=100009808472767"><img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" /></a>
                 </div>
                 <div class="social-item">
                     <a href="https://www.instagram.com/huynhbao.toan/"><img src="https://img.icons8.com/bubbles/100/000000/instagram-new.png" /></a>
@@ -402,6 +389,7 @@
     <script type="module" src="./app.js"></script>
     <script type="module" src="logout.js"></script>
     <script type="module" src="./chat.js"></script>
+    <script type="module" src="./micro.js"></script>
 
 </body>
 

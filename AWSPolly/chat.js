@@ -1,4 +1,4 @@
-const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3/aws-polly';
+const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753/aws-polly';
 const chatChannel = 'pubnub_chat_polly';
 const chatHistoryUl = $('#chat-history-ul');
 
@@ -17,8 +17,6 @@ jQuery.fn.sortDomElements = (function() {
 })();
 
 var generatePerson = function(online) {
-
-    
     var myChatUser = JSON.parse(localStorage.getItem("myChatUser"));
     if (myChatUser) {
         return myChatUser;
@@ -49,12 +47,9 @@ var generatePerson = function(online) {
 // use a helper function to generate a new profile
 let newPerson = generatePerson(true);
 
-
 let pubnub = new PubNub({
-
-    publishKey: 'pub-c-77eb6c6f-e84e-4884-88ca-b202a783e934',
-    subscribeKey: 'sub-c-7ae8599d-3cd6-4b45-a5ce-aeb06da6ade3',
-
+    publishKey: 'pub-c-86a6a9b1-fe29-415f-ba09-06dd99773907 ',
+    subscribeKey: 'sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753',
     uuid: newPerson.uuid
 });
 
