@@ -1,22 +1,22 @@
-const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753/aws-polly';
+const pollyAudioPubNubFunction = 'https://ps.pndsn.com/v1/blocks/sub-key/sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753/AWSPolly';
 const chatChannel = 'pubnub_chat_polly';
 const chatHistoryUl = $('#chat-history-ul');
 
 function parseTime(time) {
     return time.toLocaleDateString() + ", " + time.toLocaleTimeString().
-    replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+        replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
 }
 
 // Make a jQuery sort for the chat log based on message timetoken (tt)
-jQuery.fn.sortDomElements = (function() {
-    return function(comparator) {
-        return Array.prototype.sort.call(this, comparator).each(function(i) {
+jQuery.fn.sortDomElements = (function () {
+    return function (comparator) {
+        return Array.prototype.sort.call(this, comparator).each(function (i) {
             this.parentNode.appendChild(this);
         });
     };
 })();
 
-var generatePerson = function(online) {
+var generatePerson = function (online) {
     var myChatUser = JSON.parse(localStorage.getItem("myChatUser"));
     if (myChatUser) {
         return myChatUser;
@@ -24,9 +24,11 @@ var generatePerson = function(online) {
 
     var person = {};
 
-    var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' ');
+    var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' '); //đổi
 
-    var avatars = ['https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg'];
+    var avatars = ['https://hinhnen123.com/wp-content/uploads/2021/09/Chiem-nguong-400-hinh-anh-meo-ngau-cuc-dep-phong-cach-ba-dao-12.jpg',
+        'https://haycafe.vn/wp-content/uploads/2022/02/anh-meo-cute-hinh-cute-meo.jpg',
+        'https://i.pinimg.com/564x/05/09/94/050994962c61328795f2568b4c51c0ab.jpg'];  //đổi
 
     person.first = names[Math.floor(Math.random() * names.length)];
     person.last = names[Math.floor(Math.random() * names.length)];
@@ -48,8 +50,12 @@ var generatePerson = function(online) {
 let newPerson = generatePerson(true);
 
 let pubnub = new PubNub({
-    publishKey: 'pub-c-86a6a9b1-fe29-415f-ba09-06dd99773907 ',
+    publishKey: 'pub-c-86a6a9b1-fe29-415f-ba09-06dd99773907',
     subscribeKey: 'sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753',
+    //publishKey: 'pub-c-87f9b956-f89b-48f3-99e9-e0769d909a66',
+    //subscribeKey: 'sub-c-e1ccd4f6-7857-4505-b59d-ede1bf03ac5e',
+    //  pub-c-86a6a9b1-fe29-415f-ba09-06dd99773907
+    //  sub-c-b860f3b4-abb9-4c79-9efe-e0135587a753
     uuid: newPerson.uuid
 });
 
@@ -58,8 +64,8 @@ let peopleTemplate = Handlebars.compile($("#person-template").html());
 let meTemplate = Handlebars.compile($("#message-template").html());
 let userTemplate = Handlebars.compile($("#message-response-template").html());
 
-const source_language = "en";
-const target_language = "es";
+const source_language = "en";//en
+const target_language = "es";//es
 
 var AUDIO_FORMATS = {
     'ogg_vorbis': 'audio/ogg',
@@ -85,10 +91,10 @@ const init = () => {
     } else {
 
         pubnub.addListener({
-            message: function(message) {
+            message: function (message) {
                 renderMessage(message);
             },
-            presence: function(presenceEvent) {
+            presence: function (presenceEvent) {
                 let type = presenceEvent.action;
 
                 if (type === 'join') {
@@ -108,11 +114,11 @@ const init = () => {
 
         //get old messages from history
         pubnub.history({
-                channel: chatChannel,
-                count: 3,
-                stringifiedTimeToken: true
-            },
-            function(status, response) {
+            channel: chatChannel,
+            count: 3,
+            stringifiedTimeToken: true
+        },
+            function (status, response) {
                 if (response.messages && response.messages.length > 0) {
                     response.messages.forEach((historicalMessage) => {
                         renderMessage(historicalMessage, true);
@@ -121,7 +127,7 @@ const init = () => {
             }
         );
 
-        $("#speechButton").click(function() {
+        $("#speechButton").click(function () {
 
             if (speechEnabled) {
                 speechEnabled = false;
@@ -215,7 +221,7 @@ const renderMessage = (message) => {
     // Sort messages in chat log based on their timetoken (tt)
     chatHistoryUl
         .children()
-        .sortDomElements(function(a, b) {
+        .sortDomElements(function (a, b) {
             akey = a.dataset.order;
             bkey = b.dataset.order;
             if (akey == bkey) return 0;
@@ -238,7 +244,7 @@ const scrollToBottom = () => {
  */
 function getSupportedAudioFormats(player) {
     return Object.keys(AUDIO_FORMATS)
-        .filter(function(format) {
+        .filter(function (format) {
             var supported = player.canPlayType(AUDIO_FORMATS[format]);
             return supported === 'probably' || supported === 'maybe';
         });
@@ -259,13 +265,13 @@ function getPollyAudioForText(text) {
                     }
                 }
             }),
-        }).done(function(res) {
+        }).done(function (res) {
             return resolve('data:audio/mp3;base64,' + res.polly_sound);
         });
     });
 }
 
-window.onbeforeunload = function() {
+window.onbeforeunload = function () {
     pubnub.unsubscribe([chatChannel])
 };
 

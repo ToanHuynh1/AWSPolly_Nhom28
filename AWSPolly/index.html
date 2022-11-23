@@ -47,7 +47,7 @@
                         <li><a href="#hero" data-after="Home">Home</a></li>
                         <li><a href="#projects" data-after="Service">Members</a></li>
                         <li><a href="#services" data-after="Projects">Projects</a></li>
-                        <li><a href="#pub-nub" data-after="PubNub">PubNub</a></li>
+                        <li><a href="#pub-nub" data-after="PubNub">Chat</a></li>
                         <li><a href="#about" data-after="About">Code</a></li>
                         <li><a href="#contact" data-after="Contact">Contact</a></li>
                     </ul>
@@ -150,6 +150,7 @@
           <option value="Astrid">Swedish</option>
           <option value="Filiz">Turkish</option>
           <option value="Gwyneth">Welsh(Wales)</option>
+      
         </select> </br>
                 <input type="file" id="myFile" name="filename" accept=".txt">
                 <p id="state"></p>
@@ -178,11 +179,8 @@
         <div class="container clearfix">
             <div class="people-list" id="people-list">
                 <ul class="list">
-
-                    
-
                    
-                    <h1 style="margin-bottom: 12px;">Danh sách thành viên</h1>
+                    <h1 style="margin-bottom: 12px; margin-top: -12px;">Danh sách thành viên</h1>
 
                     <i style="margin-bottom: 12px;" class="fa fa-circle online"></i> online
 
@@ -265,18 +263,20 @@
             </div>
             <div class="chat">
                 <div class="chat-header clearfix">
-                    <img src="./img/anh2.jpg" alt="avatar" class="img-header" />
+                    <img src="./img/hacker.png" alt="avatar" class="img-header" />
                     <div class="chat-about">
-                        <div class="chat-with">GIT CHAT</div>
+                        <div class="chat-with">Chat With Me</div>
+                        <h2 id='name-user'></h2>
                     </div>
-                    <div id="speechButton" class="speech-button"><img  src="./speech-icon.png"></div>
+                    <div id="speechButton" class="speech-button"><img  src="./img/sound.png"></div>
                 </div>
                 <div class="chat-history">
                     <ul id="chat-history-ul"></ul>
                 </div>
                 <form id="sendMessage" class="chat-message clearfix">
-                    <input type="text" name="message-to-send" id="message-to-send" placeholder="Type your message" rows="1" autocomplete="off"></input>
-                    <input type="submit" value="Send"></input>
+                    <input style="background-color: rgb(200, 196, 209);"  type="text" name="message-to-send" id="message-to-send" placeholder="Type your message" rows="1" autocomplete="off"></input>
+                    <img  id="img-clear" src="./img/dust.png" alt="#">
+                    <input style="background-color: rgb(73, 44, 135); padding:5px; border-radius: 10%; " class="send-mess" type="submit" value="Send"></input>
                 </form>
             </div>
         </div>
@@ -288,7 +288,7 @@
             <li class="clearfix" data-order={{tt}}>
                 <div class="message-data align-right">
                     <span class="message-data-time">{{time}}</span> &nbsp; &nbsp;
-                    <span class="message-data-name">{{user}}</span> <i class="fa fa-circle me"></i>
+                    <!-- <span class="message-data-name">{{user}}</span> <i class="fa fa-circle me"></i> -->
                 </div>
                 <div class="message other-message float-right">
                     {{{messageOutput}}}
@@ -298,7 +298,7 @@
         <script id="message-response-template" type="text/x-handlebars-template">
             <li data-order={{tt}}>
                 <div class="message-data">
-                    <span class="message-data-name"><i class="fa fa-circle online"></i> {{user}}</span>
+                    <!-- <span class="message-data-name"><i class="fa fa-circle online"></i> {{user}}</span> -->
                     <span class="message-data-time">{{time}}</span>
                 </div>
                 <div class="message my-message">
@@ -309,12 +309,12 @@
         <script id="person-template" type="text/x-handlebars-template">
             {{#if first}}
             <li class="clearfix" id="{{uuid}}">
-                <!-- <img src="{{avatar}}" alt="avatar" /> -->
+                <img src="{{avatar}}" alt="avatar" />
                 <div class="about">
-                    <!-- <div style="font-size: 20px;" class="name">{{first}}</div>
+                    <div style="font-size: 20px;" class="name">{{first}}</div>
                     <div class="status">
                         <i class="fa fa-circle online"></i> online
-                    </div> -->
+                    </div>
                 </div>
             </li>
             {{/if}}
@@ -387,8 +387,8 @@
     </section>
     <!-- End Footer -->
     <script type="module" src="./app.js"></script>
-    <script type="module" src="logout.js"></script>
-    <script type="module" src="./chat.js"></script>
+    <script type="module" src="./logout.js"></script>
+    <script src="./chat.js"></script>
     <script type="module" src="./micro.js"></script>
 
 </body>

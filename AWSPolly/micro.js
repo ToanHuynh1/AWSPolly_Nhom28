@@ -15,5 +15,10 @@ document.getElementById('audio-btn').addEventListener('click', function () {
     }
 })
 
+document.getElementById('img-clear').addEventListener('click', function () {
+    document.getElementById('message-to-send').value = '';
+})
+
+
 
 

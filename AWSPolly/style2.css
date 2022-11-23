@@ -124,3 +124,36 @@ select option {
 #audioPlayback #audioSource {
     text-align: center;
 }
+
+#img-clear
+{
+    width: 35px;
+    height: 35px;
+    margin-left: 50%;
+}
+
+
+#img-clear:hover
+{
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 3px;
+    background-color: #d8797b;
+    border-radius: 15%;
+    -webkit-border-radius: 15%;
+    -moz-border-radius: 15%;
+    -ms-border-radius: 15%;
+    -o-border-radius: 15%;
+}
+.send-mess
+{
+    margin-top: 10px;
+    
+}
+
+.speech-button
+{
+    width: 40px;
+    height: 40px;
+ 
+}
