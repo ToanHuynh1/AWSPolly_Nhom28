@@ -21,7 +21,6 @@ document.getElementById('myFile').onchange = function () {
 //Hàm xử lý event onchange lấy thông tin ngôn ngữ do người dùng chọn khi select -> option
 function getInfo() {
     a = document.getElementById('author').value;
-    console.log(a)
     return a
 }
 function clearText() {
@@ -44,6 +43,14 @@ function speakText() {
     speechParams.VoiceId = getInfo()
     //Dòng ngay trên trên là gán thuộc tính Voiced của Object speechParams là ngôn ngữ do người dùng chọn
     speechParams.Text = document.getElementById("textEntry").value;
+
+    if (speechParams.Text == '')
+    {
+        alert('Chưa có thông tin để có thể đọc')
+    }
+
+    else
+    {
     //Dòng phía trên trên là gán thuộc tính Text của Object speechParams là đoạn văn bản người dùng nhập
 
     // Tạo đối tượng dịch vụ Polly và đối tượng presigner 
@@ -60,4 +67,5 @@ function speakText() {
             document.getElementById('result').innerHTML = "Speech ready to play.";
         }
     });
+    }
 }

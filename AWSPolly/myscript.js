@@ -71,6 +71,7 @@ signinButton.addEventListener("click", (e) => {
       })
         .then(() => {
           location.href = "http://192.168.56.1:8080/index.html?uuid="+emailSignin;
+  
           alert('Đăng nhập thành công với tài khoản '+ emailSignin)
         })
         .catch((error) => {
@@ -86,3 +87,5 @@ signinButton.addEventListener("click", (e) => {
     .then(() => { })
     .catch((error) => { });
 });
+
+
