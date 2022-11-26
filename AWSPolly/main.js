@@ -32,12 +32,42 @@ function clearText() {
 }
 //Hàm xử lý khi click vào nút chuyển đổi 
 function speakText() {
+    var textType = "text";
+
+    const layGiatrihehe = document.getElementById('textEntry').value 
+
+    var subDes = layGiatrihehe.slice(0,7);
+
+    var inputs;
+
+    if (subDes == '<speak>')
+    {
+        inputs = document.querySelector('.toggle');
+
+        inputs.checked = true;
+    }
+    else
+    {
+        inputs = document.querySelector('.toggle');
+
+        inputs.checked = false;
+    }
+
+    console.log(subDes)
+    // Get the checkbox
+    var checkBox = document.getElementById("toggle");
+
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true) {
+        textType = "ssml"
+
+    }
     // Tạo 1 object là speechParams có các thuộc tính như bên dưới
     var speechParams = {
         OutputFormat: "mp3",
         SampleRate: "22050",
         Text: "",
-        TextType: "text",
+        TextType: textType,
         VoiceId: ""
     };
     speechParams.VoiceId = getInfo()
