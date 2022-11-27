@@ -28,16 +28,17 @@ signupButton.addEventListener("click", (e) => {
   let nohp = document.getElementById("nohp").value;
   let emailSignup = document.getElementById("email_signup").value;
   let passwordSignup = document.getElementById("psw_signup").value;
-  createUserWithEmailAndPassword(auth, emailSignup, passwordSignup)
-    .then((userCredential) => {
+  // createUserWithEmailAndPassword(auth, emailSignup, passwordSignup)
+  //   .then((userCredential) => {
       // Signed in
-      const user = userCredential.user;
 
-      // let userid = Math.floor(Math.random() * (10000 - 1 + 1)) + 1;
+      let userid = Math.floor(Math.random() * (10000 - 1 + 1)) + 1;
 
-      // userid = userid +'1';
+      userid = userid +'1';
 
-      set(ref(database, "users/" + user.uid), {
+      console.log(userid)
+
+      set(ref(database, "users/" + userid), {
         name: name,
         nohp: nohp,
         email: emailSignup,
@@ -51,12 +52,12 @@ signupButton.addEventListener("click", (e) => {
           alert(error);
         });
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert('errorMessage');
-    });
-});
+    // .catch((error) => {
+    //   const errorCode = error.code;
+    //   const errorMessage = error.message;
+    //   alert('errorMessage');
+    // });
+// });
 
 signinButton.addEventListener("click", (e) => {
   let emailSignin = document.getElementById("email_signin").value;
