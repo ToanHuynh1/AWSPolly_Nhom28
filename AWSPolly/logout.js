@@ -21,7 +21,7 @@ logoutButton.addEventListener("click", (e) => {
     signOut(auth)
         .then(() => {
             alert("Đăng xuất thành công");
-            location.href = "http://192.168.56.1:8080/AWSPolly/login.html";
+            location.href = "https://toanhuynh1.github.io/TestPush/login.html";
         })
         .catch((error) => { });
 });

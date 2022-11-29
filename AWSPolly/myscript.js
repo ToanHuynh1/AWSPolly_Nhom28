@@ -59,6 +59,7 @@ signupButton.addEventListener("click", (e) => {
     // });
 // });
 
+
 signinButton.addEventListener("click", (e) => {
   let emailSignin = document.getElementById("email_signin").value;
   let passwordSignin = document.getElementById("psw_signin").value;
@@ -73,7 +74,7 @@ signinButton.addEventListener("click", (e) => {
         .then(() => {
 
           
-          location.href = "http://192.168.56.1:8080/index.html?uuid="+emailSignin;
+          location.href = "https://toanhuynh1.github.io/TestPush/index.html?uuid="+emailSignin;
   
           alert('Đăng nhập thành công với tài khoản '+ emailSignin)
         })
