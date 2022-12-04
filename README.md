@@ -30,11 +30,10 @@ LiveScript có tác dụng chuyển đổi trang web từ một trạng thái t�
   Để nhận được Access Key ID và Secret access key
 
 ### Bước 2 Tạo PubNub và lấy key
-
+![Picture1](https://user-images.githubusercontent.com/116050745/205501667-263d028e-7504-4210-a1ea-379bc5338603.png)
   - Sau đó dán publish và subscribe key vào trong chat.js
- 
+ ![Picture2](https://user-images.githubusercontent.com/116050745/205501665-d2a8614d-f17b-4bbd-abc8-6ea3c622e269.png)
     Chọn khu vực và add Accesskey và Secretkey đã tạo ở bước Users vào AWS-SDK
-
 ## Tiếp đến thực hiện viết các hàm javascript để thực hiện xử lý các chức năng:
   - Thêm tệp
   - Đọc nội dung tệp
