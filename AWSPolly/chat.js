@@ -24,11 +24,11 @@ var generatePerson = function (online) {
 
     var person = {};
 
-    var names = 'RondalDo Messi Andrew Austin Michelle Neymar QuangHai Ignacio Leta Suzi Brad Malvina Renea Malorie VanLam'.split(' '); 
+    var names = 'Suzie Kimi Andrew Austin Michelle Franklyn Burton Ignacio Leta Suzi Brad Malvina Renea Malorie Hellen'.split(' '); 
 
-    var avatars = ['https://znews-photo.zingcdn.me/w660/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg',
-        'https://image.thanhnien.vn/w1024/Uploaded/2022/ifyiy/2022_01_04/a5ee06311886d2d88b97-981.jpg',
-        'https://didongviet.vn/dchannel/wp-content/uploads/2022/01/cute-didongviet.jpg']; 
+    var avatars = ['https://hinhnen123.com/wp-content/uploads/2021/09/Chiem-nguong-400-hinh-anh-meo-ngau-cuc-dep-phong-cach-ba-dao-12.jpg',
+        'https://haycafe.vn/wp-content/uploads/2022/02/anh-meo-cute-hinh-cute-meo.jpg',
+        'https://i.pinimg.com/564x/05/09/94/050994962c61328795f2568b4c51c0ab.jpg']; 
 
     person.first = names[Math.floor(Math.random() * names.length)];
     person.last = names[Math.floor(Math.random() * names.length)];

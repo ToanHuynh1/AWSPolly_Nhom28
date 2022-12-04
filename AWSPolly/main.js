@@ -33,13 +33,9 @@ function clearText() {
 //Hàm xử lý khi click vào nút chuyển đổi 
 function speakText() {
     var textType = "text";
-
     const layGiatrihehe = document.getElementById('textEntry').value 
-
     var subDes = layGiatrihehe.slice(0,7);
-
     var inputs;
-
     if (subDes == '<speak>')
     {
         inputs = document.querySelector('.toggle');
@@ -52,8 +48,6 @@ function speakText() {
 
         inputs.checked = false;
     }
-
-    console.log(subDes)
     // Get the checkbox
     var checkBox = document.getElementById("toggle");
 

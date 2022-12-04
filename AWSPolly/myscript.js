@@ -1,95 +1,21 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
-import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+const card = document.querySelector(".card");
+card.addEventListener("mousemove", (e) => {
+    card.style.cssText = `
+      transform: rotateX(${
+          -(window.innerHeight / 2 - e.pageX) / 25
+      }deg) rotateY(${(window.innerHeight / 2 - e.pageY) / 25}deg);
+  `;
+});
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAumUTEV-8m0ssgIYssxN6gGzgd_VxPB78",
-  authDomain: "authfirebase-2b26c.firebaseapp.com",
-  databaseURL: "https://authfirebase-2b26c-default-rtdb.firebaseio.com",
-  projectId: "authfirebase-2b26c",
-  storageBucket: "authfirebase-2b26c.appspot.com",
-  messagingSenderId: "801604261642",
-  appId: "1:801604261642:web:19c68723b4fcf93e1e0cf3"
-};
-
-
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const database = getDatabase(app);
-let signinButton = document.getElementById("signin-button");
-let signupButton = document.getElementById("signup-button");
-
-signupButton.addEventListener("click", (e) => {
-
-  let name = document.getElementById("name").value;
-  let nohp = document.getElementById("nohp").value;
-  let emailSignup = document.getElementById("email_signup").value;
-  let passwordSignup = document.getElementById("psw_signup").value;
-  // createUserWithEmailAndPassword(auth, emailSignup, passwordSignup)
-  //   .then((userCredential) => {
-      // Signed in
-
-      let userid = Math.floor(Math.random() * (10000 - 1 + 1)) + 1;
-
-      userid = userid +'1';
-
-      console.log(userid)
-
-      set(ref(database, "users/" + userid), {
-        name: name,
-        nohp: nohp,
-        email: emailSignup,
-        password: passwordSignup
-      })
-        .then(() => {
-          // Data saved successfully!
-          alert("Đã tạo tài khoản thành công!!!");
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    })
-    // .catch((error) => {
-    //   const errorCode = error.code;
-    //   const errorMessage = error.message;
-    //   alert('errorMessage');
-    // });
-// });
-
-
-signinButton.addEventListener("click", (e) => {
-  let emailSignin = document.getElementById("email_signin").value;
-  let passwordSignin = document.getElementById("psw_signin").value;
-  signInWithEmailAndPassword(auth, emailSignin, passwordSignin)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      let lgDate = new Date();
-      update(ref(database, "users/" + user.uid), {
-        last_login: lgDate
-      })
-        .then(() => {
-
-          
-          location.href = "https://toanhuynh1.github.io/TestPush/index.html?uuid="+emailSignin;
-  
-          alert('Đăng nhập thành công với tài khoản '+ emailSignin)
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert('Không tìm thấy tài khoản')
-    });
-  signOut(auth)
-    .then(() => { })
-    .catch((error) => { });
+card.addEventListener("mouseout", (e) => {
+    card.style.cssText = `
+  transition: all .3s;
+      transform: rotate(${0}deg, ${0}deg);
+  `;
 });
 
 
+
+document.getElementById('goto-nextpage').addEventListener('click', function () {
+  location.href = "http://127.0.0.1:8080/index.html";
+})

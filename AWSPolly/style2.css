@@ -80,7 +80,7 @@ select option {
 }
 
 .btn1 {
-    background-color: #38908f;
+    background-color: #5640bc;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -232,4 +232,15 @@ select option {
    width: 30px;
    height: 30px;
    margin-top: 11px;
+}
+
+.select-language
+{
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.form-select
+{
+    margin-top: 12px;
 }
