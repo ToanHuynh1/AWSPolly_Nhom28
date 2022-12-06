@@ -16,7 +16,7 @@
 2. Amazon Web Services
 - Amazon Web Services (AWS) là nền tảng đám mây toàn diện và được sử dụng rộng rãi nhất, cung cấp trên 200 dịch vụ đầy đủ tính năng từ các trung tâm dữ liệu trên toàn thế giới. Hàng triệu khách hàng—bao gồm các công ty khởi nghiệp tăng trưởng nhanh nhất, các tập đoàn lớn nhất cũng như các cơ quan hàng đầu của chính phủ—đều tin tưởng vào AWS để giảm chi phí, trở nên linh hoạt hơn và đổi mới nhanh hơn.
 3. HTML, CSS, JavaScript
-- HTML là tên viết tắt của HyperText Markup Language. Trong chương trình của môn tin học thuộc trung học phổ thông, HTML được giới thiệu là ngôn ngữ đánh dấu siêu văn bản.Và thay vì sử dụng ngôn ngữ lập trình để thực hiện các chức năng, HTML sử dụng các thẻ để xác định các loại nội dung khác nhau và mục đích phục vụ cho trang web. HTML là ngôn ngữ được sử dụng cho các tài liệu website.
+- HTML là tên viết tắt của HyperText Markup Language. HTML được giới thiệu là ngôn ngữ đánh dấu siêu văn bản.Và thay vì sử dụng ngôn ngữ lập trình để thực hiện các chức năng, HTML sử dụng các thẻ để xác định các loại nội dung khác nhau và mục đích phục vụ cho trang web. HTML là ngôn ngữ được sử dụng cho các tài liệu website.
 - CSS là từ viết tắt của “Cascading Style Sheets”. Ngôn ngữ lập trình này quy định các thành phần HTML sẽ xuất hiện trên website như thế nào.
 Với CSS sẽ giúp định hình kiểu nội dung này để trang web đó xuất hiện trước người dùng theo một cách đẹp hơn.
  -JavaScript hiểu theo nghĩa đơn giản hơn , nó chính là ngôn ngữ được sử dụng rộng rãi khi kết hợp với HTML/CSS để thiết kế web động
@@ -35,4 +35,4 @@ Với CSS sẽ giúp định hình kiểu nội dung này để trang web đó x
   - Xác định dạng dữ liệu đầu vào: văn bản thuần túy hoặc SSML
   - Chuyển thành giọng nói
   - Nhận dạng giọng nói rồi chuyển thành văn bản
-  - tạo ra văn bản ngẫu nhiên có sẵn theo ngôn ngữ được chọn
+  - Tạo ra văn bản ngẫu nhiên có sẵn theo ngôn ngữ được chọn 
