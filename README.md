@@ -3,6 +3,8 @@
   - Huỳnh Bảo Toàn         20161385
   - Vũ Trần Thành Công     20110448
   - Đào Xuân Trí           20110581
+  
+  # Link Deploy: https://toanhuynh1.github.io/TestPush/login.html
 
 Đề tài: Xây dựng ứng dụng trên AWS & Tìm hiểu Polly và viết ứng dụng minh họa
 
